@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 15,
                 ),
                 Text(
-                  "Sign in and get your health personalized with our AI Technology.", // Word above the email field
+                  "Sign in and get your warehouse personalized with our AI Technology.", // Word above the email field
                   style: GoogleFonts.plusJakartaSans(
                       fontSize: 16, color: const Color(0xFF5D6A85)),
                 ),

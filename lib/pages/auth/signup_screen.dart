@@ -162,7 +162,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Password Confirmation",
+                      "Password",
                       style: GoogleFonts.plusJakartaSans(
                           fontSize: 14, fontWeight: FontWeight.w800),
                     ),
