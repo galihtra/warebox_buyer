@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../auth/login_screen.dart';
 
@@ -18,7 +19,34 @@ class _HomeScreenState extends State<HomeScreen> {
     String? userEmail = _auth.currentUser!.email;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home Screen"),
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: true,
+        leading: Align(
+          alignment: const AlignmentDirectional(0.00, 0.00),
+          child: IconButton(
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.black,
+              size: 24,
+            ),
+            onPressed: () {}, 
+          ), 
+        ),
+        title: Align(
+          alignment: const AlignmentDirectional(0.00, 0.00),
+          child: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 50, 0),
+            child: Text(
+              'Home',
+              textAlign: TextAlign.start,
+              style: GoogleFonts.plusJakartaSans(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.black
+              ),
+            ),
+          ),
+        ),
       ),
       body: Center(
         child: Padding(
