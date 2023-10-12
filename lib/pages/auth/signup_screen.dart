@@ -24,7 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String _email = "";
   String _password = "";
   String _name = "";
-  bool _isPasswordVisible = false; // Untuk mengontrol tampilan kata sandi
+  bool _isPasswordVisible = false;// Untuk mengontrol tampilan kata sandi
   bool _acceptPrivacy = false;
 
   void _handleSignUp() async {
@@ -83,7 +83,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Email Address",
+                      "Username",
                       style: GoogleFonts.plusJakartaSans(
                           fontSize: 14, fontWeight: FontWeight.w800),
                     ),
@@ -93,11 +93,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     TextFormField(
                       controller: _nameController, // Controller untuk nama
                       decoration: InputDecoration(
-                          prefixIcon: Image.asset("assets/images/email.png"),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           ), // Field Nama
-                          hintText: "youremail@gmail.com",
+                          hintText: "Enter Your Name",
                           hintStyle: GoogleFonts.plusJakartaSans(
                               fontWeight: FontWeight.w600, fontSize: 16)),
                       validator: (value) {
@@ -121,7 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Password",
+                      "Email",
                       style: GoogleFonts.plusJakartaSans(
                           fontSize: 14, fontWeight: FontWeight.w800),
                     ),
@@ -132,8 +131,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        prefixIcon: Image.asset("assets/images/key.png"),
-                        hintText: "----------",
+                        prefixIcon: Image.asset("assets/images/email.png"),
+                        hintText: "youremail@gmail.com",
                         hintStyle: GoogleFonts.plusJakartaSans(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -141,18 +140,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12.0)),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _isPasswordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _isPasswordVisible = !_isPasswordVisible;
-                            });
-                          },
-                        ),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
