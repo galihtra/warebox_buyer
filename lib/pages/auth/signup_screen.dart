@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:warebox_buyer/pages/auth/login_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../dashboard/dashboard_screen.dart';
 
@@ -18,12 +19,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passController = TextEditingController();
-  TextEditingController _nameController = TextEditingController(); 
+  TextEditingController _nameController = TextEditingController();
 
   String _email = "";
   String _password = "";
   String _name = "";
   bool _isPasswordVisible = false; // Untuk mengontrol tampilan kata sandi
+  bool _acceptPrivacy = false;
 
   void _handleSignUp() async {
     try {
@@ -57,89 +59,198 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Register")),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Form(
             key: _formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextFormField(
-                  controller: _nameController, // Controller untuk nama
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Name", // Field Nama
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Please Enter Your Name";
-                    }
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _name = value;
-                    });
-                  },
+                const SizedBox(
+                  height: 80,
+                ),
+                Text(
+                  "Sign Up",
+                  style: GoogleFonts.plusJakartaSans(
+                      fontSize: 30, fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
-                TextFormField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Email",
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Please Enter Your Email";
-                    }
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _email = value;
-                    });
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  controller: _passController,
-                  obscureText:
-                      !_isPasswordVisible, // Mengubah tampilan berdasarkan _isPasswordVisible
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    labelText: "Password",
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _isPasswordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                      ),
-                      onPressed: () {
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Email Address",
+                      style: GoogleFonts.plusJakartaSans(
+                          fontSize: 14, fontWeight: FontWeight.w800),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    TextFormField(
+                      controller: _nameController, // Controller untuk nama
+                      decoration: InputDecoration(
+                          prefixIcon: Image.asset("assets/images/email.png"),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                          ), // Field Nama
+                          hintText: "youremail@gmail.com",
+                          hintStyle: GoogleFonts.plusJakartaSans(
+                              fontWeight: FontWeight.w600, fontSize: 16)),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please Enter Your Name";
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
                         setState(() {
-                          _isPasswordVisible = !_isPasswordVisible;
+                          _name = value;
                         });
                       },
                     ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Please Enter Your Password";
-                    }
-                    return null;
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      _password = value;
-                    });
-                  },
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Password",
+                      style: GoogleFonts.plusJakartaSans(
+                          fontSize: 14, fontWeight: FontWeight.w800),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    TextFormField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        prefixIcon: Image.asset("assets/images/key.png"),
+                        hintText: "----------",
+                        hintStyle: GoogleFonts.plusJakartaSans(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF03D4966),
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0)),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please Enter Your Email";
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        setState(() {
+                          _email = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Password Confirmation",
+                      style: GoogleFonts.plusJakartaSans(
+                          fontSize: 14, fontWeight: FontWeight.w800),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    TextFormField(
+                      controller: _passController,
+                      obscureText:
+                          !_isPasswordVisible, // Mengubah tampilan berdasarkan _isPasswordVisible
+                      decoration: InputDecoration(
+                        prefixIcon: Image.asset("assets/images/key.png"),
+                        hintText: "----------",
+                        hintStyle: GoogleFonts.plusJakartaSans(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF03D4966),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please Enter Your Password";
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        setState(() {
+                          _password = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Checkbox(
+                      value: _acceptPrivacy,
+                      onChanged: (bool? newValue) {
+                        setState(() {
+                          _acceptPrivacy = newValue ?? false;
+                        });
+                      },
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text(
+                            "By continuing you accept our Privacy Policy and Term of Use", // Text next to the checkbox
+                            style: GoogleFonts.plusJakartaSans(
+                              fontSize: 12.0,
+                              color: const Color(0xFF818BA0),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 20,
@@ -154,41 +265,137 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         _handleSignUp();
                       }
                     },
-                    child: const Text("Daftar Akun"),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color(0xFF2E9496)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Text(
+                            "Sign Up",
+                            style: GoogleFonts.plusJakartaSans(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                        Image.asset("assets/images/UserSignIcon.png")
+                      ],
+                    ),
                   ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: double
+                      .infinity, // Make the SizedBox fill the entire screen width
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Expanded(
+                        child: Divider(
+                          color: Color(0xFFBEC5D2),
+                          height: 5, // Adjust the height of the line
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 8.0,
+                            right:
+                                8.0), // Add padding to the left and right of the text
+                        child: Text(
+                          "Or",
+                          style: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12.0,
+                          ),
+                        ),
+                      ),
+                      const Expanded(
+                        child: Divider(
+                          color: Color(0xFFBEC5D2),
+                          height: 5, // Adjust the height of the line
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 56,
+                      height: 56,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // onpress google
+                        },
+                        child: Image.asset("assets/images/IconGoogle.png"),
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color(0xFFFFFFFF)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                            ),
+                            elevation: MaterialStateProperty.all(0)),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 25,
                 ),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Sudah punya akun? ',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey[700],
-                          fontFamily: 'Inter',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Already Have Account? ",
+                              style: GoogleFonts.plusJakartaSans(
+                                fontSize: 14,
+                                color: const Color(0xFF818BA0),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            TextSpan(
+                              text: 'Sign In',
+                              style: GoogleFonts.plusJakartaSans(
+                                fontSize: 14,
+                                color: Color(0xFFFA4D5E),
+                                fontWeight: FontWeight.w600,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.pushAndRemoveUntil(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const LoginScreen();
+                                  }), (route) => false);
+                                },
+                            ),
+                          ],
                         ),
                       ),
-                      TextSpan(
-                        text: 'Masuk',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.bold,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Navigator.pushAndRemoveUntil(context,
-                                MaterialPageRoute(builder: (context) {
-                              return const LoginScreen();
-                            }), (route) => false);
-                          },
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),
