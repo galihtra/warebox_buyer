@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:warebox_buyer/pages/home/home_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -33,19 +35,30 @@ class _DashboardScreenState extends State<DashboardScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        selectedItemColor: Colors.redAccent, // Warna ikon ketika aktif
+        selectedItemColor: const Color(0xFF2E9496),
+        selectedLabelStyle: GoogleFonts.nunito(
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
+          color: const Color(0xFF797979)
+        ), // Warna ikon ketika aktif
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Beranda',
+            icon: ImageIcon(
+              AssetImage("assets/images/homeIcon.png")
+            ),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifikasi',
+            icon: ImageIcon(
+              AssetImage("assets/images/myWarehouseIcon.png")
+            ),
+            label: 'My Warehouse',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profil',
+            icon: ImageIcon(
+              AssetImage("assets/images/profileIcon.png")
+            ),
+            label: 'Profile',
           ),
         ],
       ),
