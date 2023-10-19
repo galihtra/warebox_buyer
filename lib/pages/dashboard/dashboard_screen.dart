@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:warebox_buyer/pages/home/home_screen.dart';
+import 'package:warebox_buyer/pages/profile/profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -16,10 +17,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const Center(
-      child: Text('Null'),
-    ),const Center(
-      child: Text('Null'),
+      child: Text("Null"),
     ),
+    const  ProfileScreenWidget(),
   ];
 
   void _onItemTapped(int index) {

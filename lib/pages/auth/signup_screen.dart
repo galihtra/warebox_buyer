@@ -46,6 +46,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
         'isAdmin': false,
       });
 
+      // Simpan data pengguna ke Firestore
+      await FirebaseFirestore.instance
+          .collection('profile')
+          .doc(userCredential.user!.uid)
+          .set({
+        'uid': userCredential.user!.uid,
+        'username': _name,
+        'phone_number': null,
+        'address': null,
+        'about': null,
+        'gender': "Pria"
+      });
+
+
       Navigator.pushAndRemoveUntil(context,
           MaterialPageRoute(builder: (context) {
         return const DashboardScreen();

@@ -6,7 +6,9 @@ import 'package:warebox_buyer/pages/home/image_slider/image_slider.dart';
 import 'package:warebox_buyer/pages/home/warehouse_category/custom_category_button.dart';
 import 'package:warebox_buyer/pages/home/warehouse_list/custom_warehouse_itemlist.dart';
 
+
 import '../auth/login_screen.dart';
+import '../../pages/navbar/navbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -39,13 +41,19 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: true,
         leading: Align(
           alignment: const AlignmentDirectional(0.00, 0.00),
-          child: IconButton(
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.black,
-              size: 24,
-            ),
-            onPressed: () {},
+          child: Builder(
+            builder: (context) {
+              return IconButton(
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                  size: 24,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              );
+            }
           ),
         ),
         title: Align(
@@ -63,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      drawer: Navbar(),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Column(
@@ -92,8 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             letterSpacing: 1,
                             color: const Color(0xFF77838F),
                           ),
-                          contentPadding: const EdgeInsets.only(left: 10.0, top: 12.0)
-                        ),
+                          contentPadding:
+                              const EdgeInsets.only(left: 10.0, top: 12.0)),
                     ),
                   ),
                 ),
@@ -210,8 +219,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Column(
               children: [
                 Padding(
-                  padding:
-                      const EdgeInsets.only(left: 18.0, right: 18.0, top: 23, bottom: 8.0),
+                  padding: const EdgeInsets.only(
+                      left: 18.0, right: 18.0, top: 23, bottom: 8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
