@@ -1,13 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+
+
 import 'package:warebox_buyer/pages/home/image_slider/image_slider.dart';
 import 'package:warebox_buyer/pages/home/warehouse_category/custom_category_button.dart';
-import 'package:warebox_buyer/pages/home/warehouse_list/custom_warehouse_itemlist.dart';
-
-
-import '../auth/login_screen.dart';
+import 'package:warebox_buyer/pages/home/warehouseItem_list/custom_warehouse_itemlist.dart';
+import 'package:warebox_buyer/pages/home/search_input/search_input.dart';
 import '../../pages/navbar/navbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   TextEditingController _searchController = TextEditingController();
 
   final List<String> imageList = [
@@ -33,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String? userEmail = _auth.currentUser!.email;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -76,37 +73,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
         child: Column(
           children: [
-            Column(
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.only(top: 20.0, left: 18.0, right: 18.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.0),
-                      color: const Color(0xFFFFFFFF),
-                    ),
-                    child: TextField(
-                      controller: _searchController,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          suffixIcon: const Icon(
-                            Icons.search,
-                            color: Color(0xFF11A6A1),
-                          ),
-                          hintText: "Search",
-                          hintStyle: GoogleFonts.plusJakartaSans(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: 1,
-                            color: const Color(0xFF77838F),
-                          ),
-                          contentPadding:
-                              const EdgeInsets.only(left: 10.0, top: 12.0)),
-                    ),
-                  ),
-                ),
-              ],
+            SearcInput(
+              searchController: 
+              _searchController
             ),
             Column(
               children: [
@@ -179,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       children: [
                         CustomWarehouseItem(
-                          imagePath: "assets/images/gudangUmum.png",
+                          imagePath: "assets/images/gudangUmum.svg",
                           title1: "Gudang",
                           title2: "Umum",
                           onTap: () {
@@ -187,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                         CustomWarehouseItem(
-                          imagePath: "assets/images/gudangKhusus.png",
+                          imagePath: "assets/images/gudangKhusus.svg",
                           title1: "Gudang",
                           title2: "Khusus",
                           onTap: () {
@@ -195,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                         CustomWarehouseItem(
-                          imagePath: "assets/images/gudangDingin.png",
+                          imagePath: "assets/images/gudangDingin.svg",
                           title1: "Gudang",
                           title2: "Dingin",
                           onTap: () {
@@ -203,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                         CustomWarehouseItem(
-                          imagePath: "assets/images/gudangEcommerce.png",
+                          imagePath: "assets/images/gudangEcommerce.svg",
                           title1: "Gudang",
                           title2: "Ecommerce",
                           onTap: () {

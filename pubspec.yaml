@@ -42,6 +42,8 @@ dependencies:
   carousel_slider: ^4.2.1
   image_picker: ^1.0.4
   transparent_image: ^2.0.1
+  flutter_svg: ^2.0.7
+  google_sign_in: ^6.1.5
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +79,9 @@ flutter:
     - assets/images/homeIcon.png
     - assets/images/myWarehouseIcon.png
     - assets/images/profileIcon.png
+    - assets/images/paymentIcon.svg
+    - assets/images/logoutIcon.svg
+    - assets/images/rightArrow.svg
     - assets/images/key.png
     - assets/images/Card.png
     - assets/images/image1.jpg
@@ -84,10 +89,10 @@ flutter:
     - assets/images/image3.jpg
     - assets/images/image4.jpg
     - assets/images/image5.jpg
-    - assets/images/gudangUmum.png
-    - assets/images/gudangKhusus.png
-    - assets/images/gudangDingin.png
-    - assets/images/gudangEcommerce.png
+    - assets/images/gudangUmum.svg
+    - assets/images/gudangKhusus.svg
+    - assets/images/gudangDingin.svg
+    - assets/images/gudangEcommerce.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

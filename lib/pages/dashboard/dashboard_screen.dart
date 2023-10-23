@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:warebox_buyer/pages/home/home_screen.dart';
 import 'package:warebox_buyer/pages/profile/profile.dart';
+import 'package:warebox_buyer/pages/warehouse_page/warehousePage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -16,9 +17,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   final List<Widget> _pages = [
     const HomeScreen(),
-    const Center(
-      child: Text("Null"),
-    ),
+    const warehousePage(),
     const  ProfileScreenWidget(),
   ];
 

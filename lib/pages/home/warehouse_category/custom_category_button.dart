@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomWarehouseItem extends StatelessWidget {
   final String imagePath;
@@ -36,7 +37,7 @@ class CustomWarehouseItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Image.asset(imagePath),
+                SvgPicture.asset(imagePath),
               ],
             ),
           ),
