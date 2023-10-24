@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:warebox_buyer/pages/warehouse_page/warehouse_list/warehouse_list.dart';
+import 'package:warebox_buyer/pages/mywarehouse_detail/mywarehouse_detail.dart';
 import 'package:warebox_buyer/pages/home/search_input/search_input.dart';
 import 'package:warebox_buyer/pages/navbar/navbar.dart';
 
@@ -58,34 +59,40 @@ class _warehousePageState extends State<warehousePage> {
           child: SingleChildScrollView(
         child: Column(
           children: [
-            SearcInput(
-              searchController: _searchController
-            ),
-            Column(
-              children: [
-               ListView(
+            SearcInput(searchController: _searchController),
+            Column(children: [
+              ListView(
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   WarehouseListItem(
-                    imagePath: "assets/images/image2.jpg", 
-                    title: "Joyonoro", 
-                    location: "Batu Merah/Batam", 
+                    imagePath: "assets/images/image2.jpg",
+                    title: "Joyonoro",
+                    location: "Batu Merah/Batam",
                     action: "Active",
                     isActive: true,
+                    onTapCallback: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const myWarehouseDetail(),
+                        ),
+                      );
+                    },
                   ),
                   WarehouseListItem(
-                    imagePath: "assets/images/image1.jpg", 
-                    title: "Singgah Mampir", 
-                    location: "Batu Merah/Batam",  
+                    imagePath: "assets/images/image1.jpg",
+                    title: "Singgah Mampir",
+                    location: "Batu Merah/Batam",
                     action: "Inactive",
                     isActive: false,
+                    onTapCallback: () {
+                      print("Item tapped");
+                    },
                   )
                 ],
-               )
-              ]
-            )
+              )
+            ])
           ],
         ),
       )),
