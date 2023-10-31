@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:warebox_buyer/pages/product_list_detail/product_list_detail.dart';
+import 'package:warebox_buyer/pages/mywarehouse_detail/custom_product_item/custom_product_item.dart';
+
 class myWarehouseDetail extends StatefulWidget {
   const myWarehouseDetail({super.key});
 
@@ -150,7 +153,7 @@ class _myWarehouseDetailState extends State<myWarehouseDetail> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 20.0),
-                      padding: const EdgeInsets.all(12.0),                 
+                      padding: const EdgeInsets.all(12.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
                         color: const Color(0xFFFFFFFF),
@@ -238,89 +241,25 @@ class _myWarehouseDetailState extends State<myWarehouseDetail> {
                           const SizedBox(
                             height: 18.0,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 15.0),
-                                    width: 60,
-                                    height: 60,
-                                    padding: const EdgeInsets.all(8.0),
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        color: const Color(0xFFF4F4F4)),
-                                    child: SvgPicture.asset(
-                                        "assets/images/box.svg"),
-                                  ),
-                                  Column(
-                                    children: [
-                                      Text(
-                                        "Sofa",
-                                        style: GoogleFonts.nunito(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w700,
-                                            color: const Color(0xFF1F1F1F)),
-                                      ),
-                                      Text(
-                                        "2 m",
-                                        style: GoogleFonts.nunito(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w700,
-                                            color: const Color(0xFFC4C4C4)),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              const Icon(Icons.arrow_forward_ios_outlined)
-                            ],
+                          CustomProductItem(
+                            title: "Sofa",
+                            description: "2 m",
+                            image: "assets/images/container.svg",
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const productListDetail(),
+                                ),
+                              );
+                            },
                           ),
-                          const SizedBox(
-                            height: 15.0,
+                          CustomProductItem(
+                            title: "Dining Table",
+                            description: "2 m",
+                            image: "assets/images/container.svg",
+                            onTap: () {},
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 15.0),
-                                    width: 60,
-                                    height: 60,
-                                    padding: const EdgeInsets.all(8.0),
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        color: const Color(0xFFF4F4F4)),
-                                    child: SvgPicture.asset(
-                                        "assets/images/box.svg"),
-                                  ),
-                                  Column(
-                                    children: [
-                                      Text(
-                                        "Sofa",
-                                        style: GoogleFonts.nunito(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w700,
-                                            color: const Color(0xFF1F1F1F)),
-                                      ),
-                                      Text(
-                                        "3 m",
-                                        style: GoogleFonts.nunito(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w700,
-                                            color: const Color(0xFFC4C4C4)),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              const Icon(Icons.arrow_forward_ios_outlined)
-                            ],
-                          )
                         ],
                       ),
                     )

@@ -150,7 +150,7 @@ class _ProfileScreenState extends State<ProfileScreenWidget> {
                     });
                   },
                 ),
-                const SizedBox(height: 10.0),
+                const SizedBox(height: 20.0),
                 ProfileTextField(
                   label: "Username",
                   controller: usernameController,
