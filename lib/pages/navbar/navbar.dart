@@ -5,11 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../auth/login_screen.dart';
 
+import 'package:google_sign_in/google_sign_in.dart';
+
 class Navbar extends StatelessWidget {
   Navbar({Key? key}) : super(key: key);
 
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
   Future<Map<String, dynamic>?> getUserData() async {
     final user = auth.currentUser;
@@ -32,6 +35,7 @@ class Navbar extends StatelessWidget {
 
   signOut(BuildContext context) async {
     await auth.signOut();
+     await googleSignIn.disconnect();
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }

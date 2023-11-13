@@ -6,6 +6,7 @@ import 'package:warebox_buyer/pages/auth/login_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../dashboard/dashboard_screen.dart';
+import '../../provider/google_sign_in.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -342,8 +343,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: ElevatedButton(
                         onPressed: () {
                           // onpress google
+                          GoogleSignInProvider().googleLogin(context);
                         },
-                        child: Image.asset("assets/images/IconGoogle.png"),
+                        child: Image.asset("assets/images/googleImage.png"),
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
                                 const Color(0xFFFFFFFF)),
