@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:warebox_buyer/pages/product_list_detail/product_list_detail.dart';
 import 'package:warebox_buyer/pages/mywarehouse_detail/custom_product_item/custom_product_item.dart';
+import '../mywarehouse_detail/whatsapp_custom/whatsapp.dart';
 
 class myWarehouseDetail extends StatefulWidget {
   const myWarehouseDetail({super.key});
@@ -151,78 +151,10 @@ class _myWarehouseDetailState extends State<myWarehouseDetail> {
                         ],
                       ),
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 20.0),
-                      padding: const EdgeInsets.all(12.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.0),
-                        color: const Color(0xFFFFFFFF),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                width: 38,
-                                height: 38,
-                                margin: const EdgeInsets.only(right: 15.0),
-                                child: const CircleAvatar(
-                                  backgroundImage:
-                                      AssetImage("assets/images/image1.jpg"),
-                                ),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Natalya Alifa",
-                                    style: GoogleFonts.plusJakartaSans(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: 1,
-                                      color: const Color(0xFF202222),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 5.0,
-                                  ),
-                                  Text(
-                                    "Owner",
-                                    style: GoogleFonts.plusJakartaSans(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      letterSpacing: 1,
-                                      color: const Color(0xFF959FA1),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                "assets/images/WaIcon.svg",
-                                height: 19,
-                                width: 19,
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(left: 8.0),
-                                child: Text(
-                                  "Hubungi",
-                                  style: GoogleFonts.plusJakartaSans(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    letterSpacing: 1,
-                                    color: const Color(0xFF202222),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
+                    const CustomContactContainer(
+                      name: "Haikal", 
+                      role: "Owner", 
+                      phoneNumber: "081277644571"
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),
@@ -258,7 +190,14 @@ class _myWarehouseDetailState extends State<myWarehouseDetail> {
                             title: "Dining Table",
                             description: "2 m",
                             image: "assets/images/container.svg",
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const productListDetail2(),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
